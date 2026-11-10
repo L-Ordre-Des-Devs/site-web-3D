@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { METALS, THICK, TokenKit, type SealData, type TokenInstance } from "./token";
 import { Fleet } from "./fleet";
+import { Nebula } from "./nebula";
 import { Plan3D, type PlanFrame } from "./plan";
 import { Space } from "./space";
 import { Walkers } from "./walkers";
@@ -68,6 +69,7 @@ interface LookDef {
   gobo: number;
   grain: number;
   nebula: number;
+  deep: number;
   stars: number;
   planet: number;
   warp: number;
@@ -81,7 +83,7 @@ interface LookDef {
 }
 const BASE_LOOK: LookDef = {
   base: "#160f0a", glow: "#b8430c", glowP: [0, 0, 0.6, 0], glow2: "#4a230e", glow2P: [0.5, 1, 0.5, 0],
-  iris: 0, gobo: 0, grain: 0.03, nebula: 0, stars: 0.28, planet: 0, warp: 0, key: 2.2, sun: 1.6, rim: 0.9, env: 0.9, fleet: 0, plan: 0, walkers: 0,
+  iris: 0, gobo: 0, grain: 0.03, nebula: 0, deep: 0, stars: 0.28, planet: 0, warp: 0, key: 2.2, sun: 1.6, rim: 0.9, env: 0.9, fleet: 0, plan: 0, walkers: 0,
 };
 export const LOOKS: Record<string, Partial<LookDef>> = {
   space: { base: "#07050a", glow: "#7a2a08", glowP: [0.95, 0.05, 0.55, 0.35], glow2: "#14183a", glow2P: [0.1, 0.95, 0.7, 0.35], nebula: 1, stars: 1, planet: 1, grain: 0.035, key: 2.0, sun: 3.2, rim: 1.2, env: 1 },
@@ -96,7 +98,7 @@ export const LOOKS: Record<string, Partial<LookDef>> = {
   warp: { base: "#05040a", glow: "#2a1408", glowP: [0.5, 0.5, 0.6, 0.3], glow2: "#101a3a", glow2P: [0.5, 0.5, 0.35, 0.35], stars: 0.5, warp: 1 },
   end: { base: "#05040a", glow: "#3a1a08", glowP: [0.5, -0.05, 0.75, 0.45], glow2: "#101a3a", glow2P: [0.5, 0.5, 0.45, 0.4], stars: 0.6, warp: 1 },
   walkers: { base: "#a9bccd", glow: "#c9dae8", glowP: [0.5, 0.2, 0.7, 0.3], glow2: "#2a5d9e", glow2P: [0.5, 1.0, 0.7, 0.3], stars: 0, grain: 0.02, key: 0, sun: 0, rim: 0, env: 0.5, walkers: 1 },
-  fleet: { base: "#04070d", glow: "#173356", glowP: [0.0, 1.0, 0.55, 0.38], glow2: "#14254d", glow2P: [0.75, 0.0, 0.85, 0.42], nebula: 0.45, stars: 1, grain: 0.03, key: 1.2, sun: 0.0, rim: 1.6, env: 0.4, fleet: 1 },
+  fleet: { base: "#04070d", glow: "#173356", glowP: [0.0, 1.0, 0.55, 0.38], glow2: "#14254d", glow2P: [0.75, 0.0, 0.85, 0.42], nebula: 0, deep: 1, stars: 1, grain: 0.03, key: 1.2, sun: 0.0, rim: 1.6, env: 0.4, fleet: 1 },
 };
 
 interface Look {
@@ -109,6 +111,7 @@ interface Look {
   gobo: number;
   grain: number;
   nebula: number;
+  deep: number;
   stars: number;
   planet: number;
   warp: number;
@@ -285,6 +288,9 @@ const BACKDROP_FRAG = `
   uniform float uGobo;
   uniform float uGrain;
   uniform float uNebula;
+  uniform float uDeep;
+  uniform sampler2D uNebTex;
+  uniform vec4 uNebMap;
   uniform float uTime;
   uniform float uScroll;
   uniform vec2 uRes;
@@ -327,6 +333,10 @@ const BACKDROP_FRAG = `
       vec3 neb = mix(vec3(0.32, 0.09, 0.03), vec3(0.95, 0.55, 0.3), smoothstep(0.55, 0.95, n));
       neb = mix(neb, vec3(0.12, 0.16, 0.38), smoothstep(0.5, 0.2, n) * 0.6);
       col += neb * lanes * place * uNebula * 0.32;
+    }
+    if (uDeep > 0.001) {
+      vec2 s = (vUv - 0.5) * 2.0 * asp;
+      col += texture2D(uNebTex, (s * uNebMap.xy + uNebMap.zw) * 0.5 + 0.5).rgb * uDeep;
     }
     if (uIris > 0.001) {
       vec2 q = (vUv - 0.5) * asp;
@@ -448,6 +458,10 @@ export class Stage {
   private space?: Space;
   private fleet?: Fleet;
   private fleetProgress = 0;
+  private nebula?: Nebula;
+  private nebulaState: "idle" | "baking" | "ready" = "idle";
+  private nebulaFade = 0;
+  private disposed = false;
   private plan?: Plan3D;
   private planProgress = 0;
   private planFrame: PlanFrame = { x: 0, y: 0, w: 0, h: 0 };
@@ -513,6 +527,9 @@ export class Stage {
           uGobo: { value: 0 },
           uGrain: { value: 0.03 },
           uNebula: { value: 0 },
+          uDeep: { value: 0 },
+          uNebTex: { value: null },
+          uNebMap: { value: new THREE.Vector4(1, 1, 0, 0) },
           uTime: { value: 0 },
           uScroll: { value: 0 },
           uRes: { value: new THREE.Vector2(1, 1) },
@@ -563,6 +580,9 @@ export class Stage {
     });
     progress(0.5);
     await frame();
+    this.nebula = new Nebula({ quality: this.quality });
+    this.backdrop.material.uniforms.uNebTex.value = this.nebula.texture;
+    this.backdrop.material.uniforms.uNebMap.value = this.nebula.map;
     this.space = new Space({ quality: this.quality });
     this.scene.add(this.space.group, this.space.stars, this.space.dust, this.space.warp, this.space.flare);
     this.fleet = new Fleet();
@@ -771,6 +791,10 @@ export class Stage {
     this.fleet?.update(dt, time, { progress: this.fleetProgress, amount: look.fleet, reduced: this.reduced, aspect: this.aspect, camera: this.camera });
     this.walkers?.update(dt, time, { amount: look.walkers, progress: this.walkersProgress, aspect: this.aspect, reduced: this.reduced, veil: look.base });
     this.plan?.update({ amount: look.plan, p: this.planProgress, frame: this.planFrame, width: this.width, height: this.height, camera: this.camera, reduced: this.reduced });
+    this.bakeNebula();
+    this.nebulaFade = damp(this.nebulaFade, this.nebulaState === "ready" ? 1 : 0, this.reduced ? 60 : 2.5, dt);
+    const deep = look.deep * this.nebulaFade;
+    if (deep > 0.001) this.nebula?.update({ aspect: this.aspect, pointer: this.pointerS, progress: this.fleetProgress, time, reduced: this.reduced });
     space.update(dt, time, { scroll, worldPerPx: this.worldPerPx, stars: look.stars, planet: look.planet, warp: this.reduced ? 0 : Math.max(look.warp, Math.min(1, intro * 1.3)), dpr: this.dpr, pointer: this.pointerS, aspect: this.aspect, focus: this.focus.set(portrait ? pose.mx : pose.x, portrait ? pose.my : pose.y) }, this.camera);
 
     const u = this.backdrop.material.uniforms;
@@ -783,12 +807,24 @@ export class Stage {
     u.uGobo.value = look.gobo;
     u.uGrain.value = look.grain;
     u.uNebula.value = look.nebula;
+    u.uDeep.value = deep;
     u.uTime.value = time;
     u.uScroll.value = scroll / Math.max(1, this.height);
     this.key.intensity = look.key;
     this.sun.intensity = look.sun;
     this.rim.intensity = look.rim;
     this.scene.environmentIntensity = look.env;
+  }
+
+  private bakeNebula() {
+    const nebula = this.nebula;
+    if (!nebula || this.nebulaState !== "idle" || this.intro > 0.001) return;
+    this.nebulaState = "baking";
+    const frame = () => new Promise<void>((res) => requestAnimationFrame(() => res()));
+    nebula
+      .bake(this.renderer, frame, () => this.disposed)
+      .then((ok) => ok && (this.nebulaState = "ready"))
+      .catch(() => {});
   }
 
   render() {
@@ -846,6 +882,7 @@ export class Stage {
   }
 
   dispose() {
+    this.disposed = true;
     this.kit?.dispose();
     this.token?.dispose();
     this.twin?.dispose();
@@ -853,6 +890,7 @@ export class Stage {
     this.podium.forEach((p) => p.token.dispose());
     this.space?.dispose();
     this.fleet?.dispose();
+    this.nebula?.dispose();
     this.plan?.dispose();
     this.walkers?.dispose();
     this.leaves?.dispose();
