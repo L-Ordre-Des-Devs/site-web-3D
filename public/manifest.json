@@ -1,0 +1,30 @@
+{
+  "name": "L'Ordre des Devs",
+  "short_name": "Ordre des Devs",
+  "description": "Communauté francophone de développeurs et cybersécurité.",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/mark-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#100904",
+  "background_color": "#100904"
+}

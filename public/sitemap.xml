@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Chaque page existe en français (/…) et en anglais (/en/…) ; les balises xhtml:link relient les deux versions. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ordre-des-devs.org/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/"/>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads"/>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/legal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/legal"/>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/vulnerabilities-blockchains</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/vulnerabilities-blockchains"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/vulnerabilities-blockchains"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/vulnerabilities-blockchains"/>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/logiciels-developpement-jeux</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/logiciels-developpement-jeux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/logiciels-developpement-jeux"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/logiciels-developpement-jeux"/>
+    <lastmod>2023-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/unity-ml-agents</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/unity-ml-agents"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/unity-ml-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/unity-ml-agents"/>
+    <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/premier-jeu-video-guide</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/premier-jeu-video-guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/premier-jeu-video-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/premier-jeu-video-guide"/>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/metiers-jeu-video</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/metiers-jeu-video"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/metiers-jeu-video"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/metiers-jeu-video"/>
+    <lastmod>2023-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/threads/hello-world-collection</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/hello-world-collection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/hello-world-collection"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/hello-world-collection"/>
+    <lastmod>2023-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/legal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/legal"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/vulnerabilities-blockchains</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/vulnerabilities-blockchains"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/vulnerabilities-blockchains"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/vulnerabilities-blockchains"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/logiciels-developpement-jeux</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/logiciels-developpement-jeux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/logiciels-developpement-jeux"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/logiciels-developpement-jeux"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/unity-ml-agents</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/unity-ml-agents"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/unity-ml-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/unity-ml-agents"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/premier-jeu-video-guide</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/premier-jeu-video-guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/premier-jeu-video-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/premier-jeu-video-guide"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/metiers-jeu-video</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/metiers-jeu-video"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/metiers-jeu-video"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/metiers-jeu-video"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ordre-des-devs.org/en/threads/hello-world-collection</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ordre-des-devs.org/threads/hello-world-collection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ordre-des-devs.org/en/threads/hello-world-collection"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ordre-des-devs.org/threads/hello-world-collection"/>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
