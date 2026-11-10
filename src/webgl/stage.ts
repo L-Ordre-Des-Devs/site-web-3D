@@ -168,11 +168,14 @@ export interface Key {
   start: number;
   end: number;
   override?: Partial<Pose>;
+  follow?: "enter" | "scroll";
+  at?: number;
 }
 interface Step<T> {
   start: number;
   end: number;
   value: T;
+  reach?: number;
 }
 
 class Timeline<T extends object> {
@@ -189,6 +192,7 @@ class Timeline<T extends object> {
       if (y <= a.end) return assign(out, a.value);
       const b = k[i + 1];
       if (!b) return assign(out, a.value);
+      if (b.reach && y >= b.start - b.reach && y < b.start) return assign(out, b.value);
       if (y < b.start) return mix(out, a.value, b.value, easeInOut((y - a.end) / Math.max(1, b.start - a.end)));
     }
     return out;
@@ -468,6 +472,7 @@ export class Stage {
   private walkers?: Walkers;
   private walkersProgress = 0;
   private leaves?: THREE.Texture;
+  private follows: { start: number; at: number; scroll: boolean }[] = [];
   private pose = poseValues("hero");
   private poseTarget = poseValues("hero");
   private look = lookValues("space");
@@ -615,7 +620,8 @@ export class Stage {
   }
 
   setKeys(poseKeys: Key[], lookKeys: Key[]) {
-    this.poses.set(poseKeys.map((k) => ({ start: k.start, end: k.end, value: poseValues(k.name, k.override) })));
+    this.poses.set(poseKeys.map((k) => ({ start: k.start, end: k.end, value: poseValues(k.name, k.override), reach: k.follow === "enter" ? this.height : undefined })));
+    this.follows = poseKeys.filter((k) => k.follow).map((k) => ({ start: k.start, at: k.at ?? k.start, scroll: k.follow === "scroll" }));
     this.looks.set(lookKeys.map((k) => ({ start: k.start, end: k.end, value: lookValues(k.name) })));
   }
 
@@ -718,6 +724,10 @@ export class Stage {
     this.holder.position.set(((portrait ? pose.mx : pose.x) * fz.w) / 2, ((portrait ? pose.my : pose.y) * fz.h) / 2, FLOAT_Z);
     this.holder.scale.setScalar(portrait ? (pose.msize * fz.w) / 2 : (pose.size * fz.h) / 2);
     this.holder.quaternion.setFromEuler(this.e.set(pose.rx, pose.ry, pose.rz));
+    for (const f of this.follows) {
+      const lag = (f.scroll ? f.at : f.start) - scroll;
+      if (f.scroll ? scroll >= f.start : lag > 0 && lag <= this.height) this.holder.position.y -= (lag / this.height) * fz.h;
+    }
 
     this.pointerS.x = damp(this.pointerS.x, this.pointer.x, 4, dt);
     this.pointerS.y = damp(this.pointerS.y, this.pointer.y, 4, dt);

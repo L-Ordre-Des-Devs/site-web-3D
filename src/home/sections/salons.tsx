@@ -182,7 +182,7 @@ export function Salons() {
       >
         <div className="lg:ml-[2vw]">
           <p className="max-w-[40ch] text-oz-body3 text-oz-cream/75">{t.hint}</p>
-          <div className="mt-[3vh] flex flex-wrap gap-2 lg:grid lg:gap-[0.6vh]" role="radiogroup" aria-label={t.group} onKeyDown={onKey}>
+          <div className="mt-[3vh] grid grid-cols-2 gap-2 lg:grid-cols-1 lg:gap-[0.6vh]" role="radiogroup" aria-label={t.group} onKeyDown={onKey}>
             {NEEDS.map(({ id }, i) => (
               <button
                 key={id}
@@ -191,7 +191,7 @@ export function Salons() {
                 aria-checked={need === i}
                 tabIndex={need === i ? 0 : -1}
                 onClick={() => pick(i)}
-                className="oz-tab oz-label rounded-full border border-transparent bg-[#24170e] px-[1.4em] py-[0.9em] text-left transition-[border-color,box-shadow,background-color] hover:bg-[#2f1e12] lg:w-fit"
+                className="oz-tab oz-label rounded-full border border-transparent bg-[#24170e] px-[1.4em] py-[0.9em] text-left transition-[border-color,box-shadow,background-color] hover:bg-[#2f1e12] max-lg:rounded-[14px] max-lg:px-[1.1em] max-lg:text-center lg:w-fit"
               >
                 {t.needs[id].label}
               </button>

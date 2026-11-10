@@ -173,9 +173,9 @@ export function Macro() {
   const text = t.reviews[which];
   return (
     <section id="relecture" data-look="macro" data-theme="dark" aria-labelledby="loupe-titre" className="relative h-[170vh]">
-      <div className="sticky top-0 h-svh overflow-hidden" data-pose="macro">
+      <div className="sticky top-0 h-svh overflow-hidden max-lg:flex max-lg:flex-col" data-pose="macro">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[50vh] bg-gradient-to-b from-[#0a0705] via-[#0a0705]/85 to-transparent max-lg:h-[28vh]" aria-hidden="true" />
-        <div className="absolute inset-x-0 top-[9vh] px-pad text-center [text-shadow:0_2px_30px_rgb(10_7_5/0.9)]">
+        <div className="absolute inset-x-0 top-[9vh] px-pad text-center [text-shadow:0_2px_30px_rgb(10_7_5/0.9)] max-lg:relative max-lg:top-auto max-lg:pt-[9vh]">
           <p className="oz-label">{t.macroKicker}</p>
           <h2 id="loupe-titre" className="oz-display mt-[1.6vh] text-[length:max(28px,calc(56*var(--oz-u)))] leading-[1.0]">
             {t.macroTitle}
@@ -183,7 +183,7 @@ export function Macro() {
           <p className="mx-auto mt-[2.4vh] max-w-[50ch] text-oz-body3 text-oz-cream/85">{t.macroText}</p>
         </div>
         <figure
-          className="absolute inset-x-0 top-[47vh] mx-auto w-[min(92vw,560px)] overflow-hidden rounded-md border border-oz-cream/25 bg-oz-ink/80 shadow-[0_30px_80px_rgb(0_0_0/0.45)] backdrop-blur-md max-lg:top-[48vh]"
+          className="absolute inset-x-0 top-[47vh] mx-auto w-[min(92vw,560px)] overflow-hidden rounded-md border border-oz-cream/25 bg-oz-ink/80 shadow-[0_30px_80px_rgb(0_0_0/0.45)] backdrop-blur-md max-lg:relative max-lg:top-auto max-lg:mb-[max(14px,2.5svh)] max-lg:mt-auto max-lg:shrink-0"
           data-reveal
         >
           <figcaption className="flex items-center justify-between gap-3 bg-oz-cream px-2 py-1.5 text-oz-ink">

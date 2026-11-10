@@ -109,7 +109,7 @@ function useCopy(text: string, prompt: string) {
 
 export function Faq() {
   const t = TEXT[useLang()];
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
   const answer = (a: string) => <p className="max-w-[62ch] text-oz-body3 text-oz-cream/80">{a}</p>;
   const items = [
     ...t.questions.map((item) => ({ q: item.q, body: answer(item.a) })),
@@ -189,10 +189,17 @@ export function End() {
       id="rejoindre"
       data-look="end"
       data-pose="end"
+      data-anchor="[data-end-seal]"
+      data-pose-follow="scroll"
       data-theme="dark"
       aria-labelledby="fin-titre"
       className="relative z-[1] grid min-h-svh grid-cols-12 grid-rows-[auto_1fr_auto] gap-x-[1.5vw] gap-y-[4vh] px-pad pb-[3.5vh] pt-[13vh] max-lg:grid-cols-1 max-lg:pt-[30vh]"
     >
+      <span
+        data-end-seal
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[29vh] h-[min(30vw,15vh)] w-[min(30vw,15vh)] -translate-x-1/2 -translate-y-full lg:hidden"
+      />
       <div className="col-start-5 col-end-[-1] text-right max-lg:col-span-1">
         <p id="fin-titre" className="oz-display text-[length:max(18px,calc(28*var(--oz-u)))] leading-[1.08]">
           <Lines text={t.endTitle} />

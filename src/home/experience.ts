@@ -176,7 +176,7 @@ export class Experience {
       }
       this.stage = stage;
       if (this.opts.reduced) stage.setIntro(0);
-      stage.resize(this.vw, this.vh);
+      stage.resize(this.vw, this.stageHeight());
       await stage.init(data, (p) => (this.target = 0.22 + p * 0.7), Object.values(SNAPS));
       if (this.disposed) {
         stage.dispose();
@@ -272,12 +272,16 @@ export class Experience {
     });
   }
 
+  private stageHeight() {
+    return this.canvas.clientHeight || this.vh;
+  }
+
   private layout() {
     const stage = this.stage;
     this.vw = window.innerWidth;
     this.vh = window.innerHeight;
     const { vh, vw } = this;
-    stage?.resize(vw, vh);
+    stage?.resize(vw, this.stageHeight());
 
     this.gallery = this.sizeGallery();
 
@@ -301,6 +305,11 @@ export class Experience {
             const ref = (el.dataset.anchorRef && this.root.querySelector(el.dataset.anchorRef)) || el;
             const sr = ref.getBoundingClientRect();
             key.override = stage.poseFromRect({ x: ar.left - sr.left, y: ar.top - sr.top, width: ar.width, height: ar.height });
+          }
+          const follow = attr === "data-pose" ? el.dataset.poseFollow : undefined;
+          if (follow === "scroll" ? key.override : follow !== undefined) {
+            key.follow = follow === "scroll" ? "scroll" : "enter";
+            key.at = b.top;
           }
           return key;
         });

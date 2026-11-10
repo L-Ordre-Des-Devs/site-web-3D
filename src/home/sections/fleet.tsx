@@ -35,7 +35,7 @@ export function Fleet() {
   const t = TEXT[lang];
   return (
     <section id="escadrille" data-look="fleet" data-theme="dark" aria-labelledby="escadrille-titre" className="relative h-[240vh]" data-fleet>
-      <div className="sticky top-0 h-svh overflow-hidden" data-pose="awayUp">
+      <div className="sticky top-0 h-dvh overflow-hidden" data-pose="awayUp">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50vh] bg-gradient-to-t from-[#04070d]/80 via-[#04070d]/40 to-transparent max-lg:h-[62vh]" aria-hidden="true" />
         <div className="absolute bottom-[12vh] left-pad w-[min(40vw,640px)] [text-shadow:0_2px_30px_rgb(4_7_13/0.8)] max-lg:inset-x-pad max-lg:bottom-[7vh] max-lg:w-auto">
           <p className="oz-label text-oz-cream/60">{t.kicker}</p>

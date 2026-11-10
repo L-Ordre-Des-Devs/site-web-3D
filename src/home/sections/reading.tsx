@@ -170,7 +170,7 @@ export function Archives() {
   const list = issues(lang);
   return (
     <section id="articles" data-look="dark" data-theme="dark" aria-labelledby="articles-titre" className="relative h-[560vh]" data-gallery>
-      <span className="pointer-events-none absolute left-0 top-0 w-px" data-pose="cover" data-anchor="[data-g-square]" data-anchor-ref="[data-g-sticky]" data-g-mark="a" />
+      <span className="pointer-events-none absolute left-0 top-0 w-px" data-pose="cover" data-pose-follow data-anchor="[data-g-square]" data-anchor-ref="[data-g-sticky]" data-g-mark="a" />
       <span className="pointer-events-none absolute left-0 w-px" data-pose="gallery" data-anchor="[data-g-core]" data-anchor-ref="[data-g-sticky]" data-g-mark="c" />
       <div className="oz-g sticky top-0 h-svh" data-g-sticky>
         <span className="oz-g__square" data-g-square aria-hidden="true" />
@@ -232,7 +232,7 @@ export function Infos() {
         <div className="relative mt-[1.5vh] grid h-[15vh] grid-cols-[76fr_22fr] grid-rows-[minmax(0,1fr)] gap-[1.8vw] max-lg:mt-4 max-lg:h-auto max-lg:grid-cols-2 max-lg:grid-rows-none max-lg:gap-x-3 max-lg:gap-y-4">
           <PlanChart variant="wide" className="h-full w-full max-lg:hidden" />
           <PlanChart variant="narrow" className="col-span-2 h-[17vh] w-full lg:hidden" />
-          <PlanDetail className="h-full w-full max-lg:col-span-2 max-lg:h-[22vh]" />
+          <PlanDetail className="h-full w-full max-lg:hidden" />
         </div>
         <ol className="relative mt-[3.5vh] grid grid-cols-6 gap-[1.8vw] max-lg:mt-8 max-lg:grid-cols-1 max-lg:gap-0">
           {t.cards.map((c, i) => (
