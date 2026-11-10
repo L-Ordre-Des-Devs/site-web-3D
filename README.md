@@ -15,6 +15,7 @@
   <a href="https://ordre-des-devs.org"><img alt="Site" src="https://img.shields.io/badge/site-ordre--des--devs.org-dc5000?style=for-the-badge&labelColor=100904"></a>
   <a href="https://discord.gg/WUhvBf6vqw"><img alt="Discord" src="https://img.shields.io/badge/Discord-rejoindre-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=100904"></a>
   <a href="https://www.patreon.com/cw/LOrdredesDevs"><img alt="Patreon" src="https://img.shields.io/badge/Patreon-soutenir-ffedd7?style=for-the-badge&logo=patreon&logoColor=ffedd7&labelColor=100904"></a>
+  <a href="https://x.com/OrdreDesDevs"><img alt="X" src="https://img.shields.io/badge/X-suivre-000000?style=for-the-badge&logo=x&logoColor=white&labelColor=100904"></a>
 </p>
 
 <p align="center">

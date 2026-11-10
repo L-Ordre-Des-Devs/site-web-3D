@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { texts, to, useLang } from "../../i18n";
-import { DISCORD, GITHUB, Lines, Out, PATREON, Roll } from "../ui";
+import { DISCORD, GITHUB, Lines, Out, PATREON, Roll, X } from "../ui";
 
 const TEXT = texts({
   fr: {
@@ -139,6 +139,7 @@ export function Faq() {
               ["Discord", DISCORD],
               ["GitHub", GITHUB],
               ["Patreon", PATREON],
+              ["X", X],
             ].map(([label, href]) => (
               <Out key={label} href={href} className="oz-pill oz-pill--brown">
                 <Roll>{label}</Roll>
@@ -223,6 +224,9 @@ export function End() {
           </Out>
           <Out href={PATREON}>
             <Roll>Patreon</Roll>
+          </Out>
+          <Out href={X}>
+            <Roll>X</Roll>
           </Out>
         </div>
         <div className="oz-label grid content-start gap-[1.1vh]">
