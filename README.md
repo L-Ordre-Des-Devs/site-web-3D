@@ -28,17 +28,25 @@
 
 ## Le site
 
-Toute la page d'accueil se joue dans une seule scène three.js, qui suit le défilement d'une section à l'autre.
+Toute la page d'accueil se joue dans une seule scène three.js ([`stage.ts`](src/webgl/stage.ts)), pilotée par le défilement ([`experience.ts`](src/home/experience.ts)). L'ordre des sections est dans [`HomePage.tsx`](src/home/HomePage.tsx).
 
-| Section | Ce qu'on y voit |
+| Section | Code |
 |---|---|
-| **Accueil** | Le sceau de l'Ordre en or, modélisé en 3D, devant une planète désertique et ses deux soleils. |
-| **Escadrille** | Des chasseurs qui sortent d'hyperespace et volent seuls : chaque pilote est simulé, de l'inclinaison au temps de réaction des ailiers. |
-| **Bon à savoir** | Une sortie de deux chasseurs tracée en 3D au fil du défilement, avec les vrais chiffres du vol. |
-| **Challenges** | Des marcheurs qui avancent dans la brume : la marche est calculée pied par pied, et le sol tremble à chaque pas. |
-| **Archives** | Les articles de la communauté, présentés en couvertures de magazine. |
+| **Accueil** et **Bien poser sa question** | [`opening.tsx`](src/home/sections/opening.tsx) · [`token.ts`](src/webgl/token.ts) · [`space.ts`](src/webgl/space.ts) |
+| **Sur le serveur** et **L'Ordre** | [`poles.tsx`](src/home/sections/poles.tsx) |
+| **Escadrille** | [`fleet.tsx`](src/home/sections/fleet.tsx) · [`fleet.ts`](src/webgl/fleet.ts) · [`flight.ts`](src/webgl/flight.ts) |
+| **Chiffrement par retournement** | [`cipher.tsx`](src/home/sections/cipher.tsx) · [`cipher-methods.ts`](src/home/sections/cipher-methods.ts) |
+| **À la loupe** | [`craft.tsx`](src/home/sections/craft.tsx) |
+| **Bon à savoir** | [`reading.tsx`](src/home/sections/reading.tsx) · [`flightplan.tsx`](src/home/sections/flightplan.tsx) · [`plan-time.ts`](src/home/sections/plan-time.ts) · [`plan.ts`](src/webgl/plan.ts) |
+| **Challenges** | [`platform.tsx`](src/home/sections/platform.tsx) · [`walkers.ts`](src/webgl/walkers.ts) · [`gait.ts`](src/webgl/gait.ts) |
+| **Noël sur le serveur** | [`fleet.tsx`](src/home/sections/fleet.tsx) |
+| **Écrits par les membres** | [`reading.tsx`](src/home/sections/reading.tsx) |
+| **Trouvez le bon salon** | [`salons.tsx`](src/home/sections/salons.tsx) |
+| **Partenaire hébergeur** | [`partner.tsx`](src/home/sections/partner.tsx) |
+| **FAQ** et fin de page | [`joining.tsx`](src/home/sections/joining.tsx) |
+| En-tête, menu et barre de défilement | [`chrome.tsx`](src/home/chrome.tsx) · [`home.css`](src/home/home.css) |
 
-Le site existe en français et en anglais (`/en`). Sans WebGL, il reste entièrement lisible : les scènes laissent place à des fonds unis, et le vol de « Bon à savoir » à un plan dessiné en SVG.
+Le site existe en français et en anglais (`/en`) : chaque composant garde ses textes dans les deux langues, à l'aide de [`i18n.ts`](src/i18n.ts). Les articles sont dans [`src/pages/threads`](src/pages/threads), les pages intérieures dans [`src/site`](src/site).
 
 ## Pile technique
 
@@ -70,8 +78,6 @@ Le build passe par deux scripts :
 
 1. **Avant** : `outils/membres.mjs` relève le nombre de membres du serveur Discord et l'écrit dans `src/home/membres.ts`. Sans réseau, il garde le nombre précédent.
 2. **Après** : `outils/pages-statiques.mjs` écrit une page HTML par adresse (titre, description et aperçu de lien propres à chaque page) et les copies compressées en Brotli et gzip.
-
-Pour la mise en ligne, téléversez tout le contenu de `build/` et le fichier `.htaccess` de la racine.
 
 ## Organisation du code
 
