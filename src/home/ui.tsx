@@ -2,7 +2,7 @@ import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 export const DISCORD = "https://discord.gg/WUhvBf6vqw";
 export const GITHUB = "https://github.com/L-Ordre-Des-Devs";
-export const PATREON = "https://patreon.com/ordre_des_devs";
+export const PATREON = "https://www.patreon.com/cw/LOrdredesDevs";
 
 export const vars = (v: Record<string, string | number>) => v as CSSProperties;
 
