@@ -98,7 +98,7 @@ public/            images, icônes, sitemap
 
 ## La communauté
 
-L'Ordre des Devs est un serveur Discord actif depuis 2023, créé par Mizari (développement) et Osiris (cybersécurité). On y pose ses questions, on relit du code et on partage ce qu'on apprend, majoritairement en français.
+L'Ordre des Devs est un serveur Discord actif depuis 2023, créé par Mizari (développement) et Osiris (cybersécurité). Les membres s'entraident sur le code et la cybersécurité, et participent ensemble à des CTF et des game jams. Les échanges se font majoritairement en français.
 
 <p align="center">
   <a href="https://discord.gg/WUhvBf6vqw"><strong>Rejoindre le Discord</strong></a>
